@@ -22,8 +22,9 @@ const createPost = asyncHandler( async(req,res) => {
         status: req.body.status,
         keywords: [],
         likes: 0,
-        author: req.user.id
+        author: 'req.user.id'
     })
+    res.json(post)
 })
 
 
