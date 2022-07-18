@@ -84,6 +84,21 @@ const delPost = asyncHandler( async(req,res) => {
     res.status(200).json({ id: req.params.postId })
 })
 
+const likePost = asyncHandler( async(req,res) => {
+    try {
+        const post = await Post.findById(req.body.likeId, {"likes":1, "_id":0})
+        if (post) {
+            const newLikes = post.likes + 1
+            await Post.findByIdAndUpdate(req.body.likeId, {likes: newLikes})
+            
+        }
+        res.status(200).json(post)
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({ error: 'Blog post not found'})
+    }
+})
+
 module.exports = {
     getAllPosts, getPost, createPost, updatePost
 }
