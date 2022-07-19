@@ -28,7 +28,7 @@ const getPost = asyncHandler( async(req,res) => {
 //*author functions________________
 
 // create blog post
-// !private
+// private
 // POST /api/posts
 const createPost = asyncHandler( async(req,res) => {
     if (!req.user) {
@@ -46,7 +46,7 @@ const createPost = asyncHandler( async(req,res) => {
 })
 
 // edit blog post
-// !private
+// private
 // PUT /api/posts/:id
 const updatePost = asyncHandler( async(req,res) => {
     const post = await Post.findById(req.params.postId)
@@ -66,7 +66,7 @@ const updatePost = asyncHandler( async(req,res) => {
 })
 
 // del blog post
-// !private
+// private
 // DEL /api/posts/:id
 const delPost = asyncHandler( async(req,res) => {
     const post = await Post.findById(req.params.postId)
@@ -81,7 +81,7 @@ const delPost = asyncHandler( async(req,res) => {
     } 
     
     await post.remove()
-    res.status(200).json({ id: req.params.postId })
+    res.status(200).json({ _id: req.params.postId })
 })
 
 const likePost = asyncHandler( async(req,res) => {

@@ -41,13 +41,24 @@ const createComment = asyncHandler(async (req,res) => {
 })
 
 //^ delete a comment 
-// get blog posts
-// public
-// GET /api/posts
+// delete comment
+// private
+// delete /api/posts/:postId/comments/:commentId
 //! protected route
 const delComment = asyncHandler(async (req,res) => {
-    // const posts = await Post.find()
-    // res.status(200).json(posts)
+    const comment = await Post.findById(req.params.commentId)
+    if (!comment) {
+        res.status(400).json({ error: 'Comment not found'})
+    } 
+    if (!req.user) {
+        res.status(401).json({ error: 'Not authorized to delete'}) 
+    }
+    if (comment.user.toString() !== req.user.id) {
+        res.status(401).json({ error: 'Not authorized to delete'})
+    } 
+    
+    await comment.remove()
+    res.status(200).json({ id: req.params.commentId })
 })
 
 //^ comment like
