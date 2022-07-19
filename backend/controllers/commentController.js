@@ -42,6 +42,8 @@ const delComment = asyncHandler(async (req,res) => {
     // res.status(200).json(posts)
 })
 
+//^ comment like
+
 module.exports = {
     getAllComments, getComment, createComment, delComment
 }

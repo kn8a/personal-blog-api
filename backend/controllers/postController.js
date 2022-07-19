@@ -100,6 +100,6 @@ const likePost = asyncHandler( async(req,res) => {
 })
 
 module.exports = {
-    getAllPosts, getPost, createPost, updatePost
+    getAllPosts, getPost, createPost, updatePost, delPost
 }
 
