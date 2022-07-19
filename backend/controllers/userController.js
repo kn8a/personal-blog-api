@@ -10,8 +10,9 @@ const genToken = (id) =>{
 
 const userLogin = asyncHandler( async(req, res, next) => {
     const {username, password} = req.body
+    console.log(username, password)
     const user = await User.findOne({username})
-    console.log(user.id, user._id)
+    //console.log(user.id, user._id)
     if (user && (await bcrypt.compare(req.body.password, user.hash))) {
         res.json({
             id: user.id,

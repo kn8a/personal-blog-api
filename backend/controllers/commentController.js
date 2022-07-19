@@ -8,8 +8,8 @@ const asyncHandler = require('express-async-handler')
 // public
 // GET /api/posts
 const getAllComments = asyncHandler(async (req,res) => {
-    // const posts = await Post.find()
-    // res.status(200).json(posts)
+    const allComments = await Comment.find({ postId: req.params.postId })
+    res.status(200).json(allComments)
 })
 
 
@@ -24,12 +24,20 @@ const getComment = asyncHandler(async (req,res) => {
 })
 
 //^ create a single comment to blog-post
-// get blog posts
 // public
-// GET /api/posts
+// POST /api/posts/:postId/comments/
 const createComment = asyncHandler(async (req,res) => {
-    // const posts = await Post.find()
-    // res.status(200).json(posts)
+    const comment = await Comment.create({
+        comment: req.body.comment,
+        author: req.body.name,
+        email: req.body.email,
+        likes: 0,
+        postId: req.params.postId
+    })
+    const totalComments = await Comment.find({ postId: req.params.postId}).count()
+    console.log(totalComments)
+    await Post.findByIdAndUpdate({_id: req.params.postId}, {comments: totalComments})
+    res.status(200).json(comment)
 })
 
 //^ delete a comment 

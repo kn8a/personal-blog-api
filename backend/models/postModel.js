@@ -22,7 +22,8 @@ const postSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        likes: { type: Number }
+        likes: { type: Number },
+        comments: { type: Number }
     },
     {
         timestamps: true
