@@ -4,19 +4,24 @@ const { findById } = require('../models/postModel')
 
 //*viewer functions_______________
 
-// get blog posts
+// get published blog posts
 // public
 // GET /api/posts
 const getAllPosts = asyncHandler(async (req,res) => {
-    let posts
-    if (req.user) {
-        posts = await Post.find()
-    } else {
-        posts = await Post.find({status:'published'})
-    }
+    const posts = await Post.find({status:'published'})
     
     res.status(200).json(posts)
 })
+
+// get published blog posts
+// public
+// GET /api/posts/all
+const getAllPostsAdmin = asyncHandler(async (req,res) => {
+    const posts = await Post.find()
+    res.status(200).json(posts)
+})
+
+
 
 // get blog post by id
 // public
@@ -24,7 +29,11 @@ const getAllPosts = asyncHandler(async (req,res) => {
 const getPost = asyncHandler( async(req,res) => {
     try {
         const post = await Post.findById(req.params.postId)
-        res.status(200).json(post)
+        if (post.status == 'published') {
+            res.status(200).json(post)
+        } else {
+            res.status(400).json({ error: 'Blog post not found'})
+        }
     } catch (error) {
         res.status(400).json({ error: 'Blog post not found'})
     }
@@ -62,13 +71,15 @@ const updatePost = asyncHandler( async(req,res) => {
     if (!req.user) {
         res.status(401).json({ error: 'Not authorized to edit'}) 
     }
-    if (post.user.toString() !== req.user.id) {
+    if (post.author.toString() !== req.user.id) {
         res.status(401).json({ error: 'Not authorized to edit'})
     } 
     
     const updatedPost = await Post.findByIdAndUpdate(req.params.postId, req.body, {
         new: true,
     })
+    res.status(200).json(updatedPost)
+
 })
 
 // del blog post
@@ -106,6 +117,6 @@ const likePost = asyncHandler( async(req,res) => {
 })
 
 module.exports = {
-    getAllPosts, getPost, createPost, updatePost, delPost
+    getAllPosts, getPost, createPost, updatePost, delPost, getAllPostsAdmin
 }
 
