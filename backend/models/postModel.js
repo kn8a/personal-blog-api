@@ -7,8 +7,7 @@ const postSchema = mongoose.Schema(
             required: true,
         },
         content: {
-            type: String,
-            required: true
+            type: String
         },
         status: {
             type: String,

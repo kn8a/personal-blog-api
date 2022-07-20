@@ -8,7 +8,13 @@ const { findById } = require('../models/postModel')
 // public
 // GET /api/posts
 const getAllPosts = asyncHandler(async (req,res) => {
-    const posts = await Post.find()
+    let posts
+    if (req.user) {
+        posts = await Post.find()
+    } else {
+        posts = await Post.find({status:'published'})
+    }
+    
     res.status(200).json(posts)
 })
 

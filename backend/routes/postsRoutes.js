@@ -5,7 +5,7 @@ const { createComment, getAllComments, getComment, delComment } = require('../co
 const { protect } = require('../middleware/authMidware')
 
 //public routes
-router.get('/', getAllPosts) //get all
+router.get('/', protect, getAllPosts) //get all
 router.get('/:postId', getPost) //get one
 router.get('/:postId/comments', getAllComments) //get all
 router.post('/:postId/comments', createComment) //create comment
