@@ -56,6 +56,10 @@ const delComment = asyncHandler(async (req,res) => {
 
     
     await comment.remove()
+    const totalComments = await Comment.find({ postId: req.params.postId}).count()
+    console.log(totalComments)
+    await Post.findByIdAndUpdate({_id: req.params.postId}, {comments: totalComments})
+
     res.status(200).json({ id: req.params.commentId })
 })
 
