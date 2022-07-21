@@ -53,9 +53,7 @@ const delComment = asyncHandler(async (req,res) => {
     if (!req.user) {
         res.status(401).json({ error: 'Not authorized to delete'}) 
     }
-    if (comment.user.toString() !== req.user.id) {
-        res.status(401).json({ error: 'Not authorized to delete'})
-    } 
+
     
     await comment.remove()
     res.status(200).json({ id: req.params.commentId })
