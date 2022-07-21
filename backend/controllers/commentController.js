@@ -46,7 +46,7 @@ const createComment = asyncHandler(async (req,res) => {
 // delete /api/posts/:postId/comments/:commentId
 //! protected route
 const delComment = asyncHandler(async (req,res) => {
-    const comment = await Post.findById(req.params.commentId)
+    const comment = await Comment.findById(req.params.commentId)
     if (!comment) {
         res.status(400).json({ error: 'Comment not found'})
     } 
