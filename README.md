@@ -39,6 +39,10 @@ A personal blog REST API with Blog posts, comments and likes using NodeJS and To
      - createdAt: created timestamp
      - updatedAt: updated timestamp
 
+### Todo:
+- add likes feature for posts and comments
+- add image/s upload for posts
+- sanitize posts/comments HTML
 
 ### Resources used
 - Backend: NodeJS with Express
