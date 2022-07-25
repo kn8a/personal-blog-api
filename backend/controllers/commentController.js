@@ -8,7 +8,7 @@ const asyncHandler = require('express-async-handler')
 // public
 // GET /api/posts
 const getAllComments = asyncHandler(async (req,res) => {
-    const allComments = await Comment.find({ postId: req.params.postId })
+    const allComments = await Comment.find({ postId: req.params.postId }).sort({createdAt: -1})
     res.status(200).json(allComments)
 })
 
