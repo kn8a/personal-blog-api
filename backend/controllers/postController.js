@@ -22,6 +22,15 @@ const getAllPostsAdmin = asyncHandler(async (req,res) => {
 })
 
 
+const getPostAdmin = asyncHandler( async(req,res) => {
+    try {
+        const post = await Post.findById(req.params.postId)
+        res.status(200).json(post) 
+    } catch (error) {
+        res.status(400).json({ error: 'Blog post not found'})
+    }
+})
+
 
 // get blog post by id
 // public
@@ -117,6 +126,6 @@ const likePost = asyncHandler( async(req,res) => {
 })
 
 module.exports = {
-    getAllPosts, getPost, createPost, updatePost, delPost, getAllPostsAdmin
+    getAllPosts, getPost, createPost, updatePost, delPost, getAllPostsAdmin, getPostAdmin
 }
 

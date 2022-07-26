@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { getAllPosts, createPost, getPost, updatePost, delPost, getAllPostsAdmin } = require('../controllers/postController')
+const { getAllPosts, createPost, getPost, updatePost, delPost, getAllPostsAdmin, getPostAdmin } = require('../controllers/postController')
 const { createComment, getAllComments, getComment, delComment } = require('../controllers/commentController')
 const { protect } = require('../middleware/authMidware')
 
@@ -8,6 +8,7 @@ const { protect } = require('../middleware/authMidware')
 router.get('/', getAllPosts) //get all
 router.post('/', protect, createPost) //!create
 router.get('/all', protect, getAllPostsAdmin)
+router.get('/all/:postId', protect, getPostAdmin)
 router.get('/:postId', getPost) //get one
 router.put('/:postId', protect, updatePost) //!update post
 router.get('/:postId/comments', getAllComments) //get all comments
