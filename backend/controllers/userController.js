@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 //jwt token generator
 const genToken = (id) =>{
-    return jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: '1d'})
+    return jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: '30d'})
 }
 
 const userLogin = asyncHandler( async(req, res, next) => {

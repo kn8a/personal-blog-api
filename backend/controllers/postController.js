@@ -102,7 +102,7 @@ const delPost = asyncHandler( async(req,res) => {
     if (!req.user) {
         res.status(401).json({ error: 'Not authorized to delete'}) 
     }
-    if (post.user.toString() !== req.user.id) {
+    if (post.author.toString() !== req.user.id) {
         res.status(401).json({ error: 'Not authorized to delete'})
     } 
     
