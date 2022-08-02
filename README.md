@@ -1,10 +1,10 @@
 ### Description:
 
 A personal blog REST API with Blog posts, comments and likes using NodeJS and Token for authorization.
-Reader Frontend : [kn8a-blog.herokuapp.com/](https://kn8a-blog.herokuapp.com/ "https://kn8a-blog.herokuapp.com/")
-Source: https://github.com/kn8a/blog-frontend
-Blog Manager Frontend: [kn8a-blog-manager.herokuapp.com/](https://kn8a-blog-manager.herokuapp.com/ "https://kn8a-blog-manager.herokuapp.com/")
-Source: https://github.com/kn8a/blog-manager
+- Reader Frontend : [kn8a-blog.herokuapp.com/](https://kn8a-blog.herokuapp.com/ "https://kn8a-blog.herokuapp.com/")
+- Source: https://github.com/kn8a/blog-frontend
+- Blog Manager Frontend: [kn8a-blog-manager.herokuapp.com/](https://kn8a-blog-manager.herokuapp.com/ "https://kn8a-blog-manager.herokuapp.com/")
+- Source: https://github.com/kn8a/blog-manager
 
 **Public API Routes:**
 
