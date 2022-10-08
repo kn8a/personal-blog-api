@@ -52,12 +52,9 @@ A personal blog REST API with Blog posts, comments and likes using NodeJS and To
 - Database: MongoDB
 - Additional libraries: express-async-handler, jsonwebtoken, mongoose, bcryptjs, dotenv
  
-### Where I struggled
+## How to use:
 
-- Implementing JWT auth method
-
-### What I Learned
-
-- Better understanding of bcryptjs
-- Better understanding of JWT
-- Writing custom auth middleware 
+1. Clone this repository.
+2.  Installation:  `npm install`
+3.  In the project directory, run:  `npm start`
+4. Open  [http://localhost:3000](http://localhost:3000/)  to view it in the browser. The page will reload if you make edits.
